@@ -23,10 +23,9 @@ export default async function RootLayout({ children }) {
       <body>
       <SupabaseProvider>
         <SupabaseListener serverAccessToken={session?.access_token} />
-          <div className="h-screen bg-[#141414]">
-              <Header email={session?.user?.email} />
-              <div className="h-[calc(100vh-70px)] flex">
-                  <SideBar />
+          <div className="h-screen w-screen bg-[#161719] flex">
+              <SideBar />
+              <div className="h-full] pl-[10px] w-full flex">
                   {children}
               </div>
           </div>

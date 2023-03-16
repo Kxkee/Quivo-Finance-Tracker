@@ -40,8 +40,8 @@ export default function PlaidLink(props: PropsPlaidLink) {
         async function getAccessToken() {
             const response = await axios.post(`http://localhost:3000/api/plaid/${props.id}/accessToken`, {
                 public_token: publicToken}).then((res)=>{
-                    console.log("accessToken: ", res.data)
-                    addBank(res.data);
+                console.log("accessToken: ", res.data)
+                addBank(res.data);
 
             })
 
@@ -71,10 +71,12 @@ export default function PlaidLink(props: PropsPlaidLink) {
 
 
     return (
-        <div>
+        <div className="w-[calc(100%-200px)] h-full flex justify-between p-5 pl-[10px] items-center text-white" style={{backgroundColor: "#141414"}}>
+            <div className="bg-[#2C2C2C] p-10 h-full w-[calc(80%-10px)] rounded">
             <button onClick={() => open()} disabled={!ready}>
                 Connect a bank account
             </button>
+            </div>
         </div>
 
 
