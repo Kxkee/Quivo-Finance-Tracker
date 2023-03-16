@@ -17,7 +17,6 @@ export async function POST(request: Request) {
 
     const data = await request.json();
     const {public_token} = data;
-    console.log("publiccccTOKEN: ",public_token);
     try {
         const response = await plaidClient.itemPublicTokenExchange({
             public_token: public_token,

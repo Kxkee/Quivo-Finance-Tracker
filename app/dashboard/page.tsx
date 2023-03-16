@@ -3,11 +3,26 @@ import PlaidLink from "@/components/PlaidLink";
 export default async function Portfolio() {
     const supabase = createClient()
     const {data: { session }} = await supabase.auth.getSession()
+    const getAccessToken = async() => {
+        try {
+            const {data, error} = await supabase
+                .from("bank")
+                .select("accessToken")
+                .eq("user_id", session?.user.id);
+            const {accessToken} = data[0]
+            return accessToken;
+        }catch (err) {
+            console.log(err);
+        }
+
+    }
+    const accessToken = await getAccessToken();
+    console.log(accessToken)
 
     return (
         <div className="w-[calc(100%-200px)] h-full flex justify-between p-5 pl-[10px] items-center text-white" style={{backgroundColor: "#141414"}}>
             <div className="bg-[#2C2C2C] p-10 h-full w-[calc(80%-10px)] rounded">
-                <PlaidLink id={session?.user?.id} />
+                <PlaidLink id={session?.user?.id} accessToken={accessToken} />
             </div>
             <div className="bg-[#2C2C2C] h-full w-[calc(20%-10px)] rounded">
                 <div className="w-full flex item-center justify-center p-10">
