@@ -1,5 +1,7 @@
-import { Configuration, PlaidApi, PlaidEnvironments } from 'plaid';
+import {AssetReportCreateRequest, Configuration, PlaidApi, PlaidEnvironments} from 'plaid';
 import {NextResponse} from "next/server";
+import {Simulate} from "react-dom/test-utils";
+import error = Simulate.error;
 
 const configuration = new Configuration({
     basePath: PlaidEnvironments.sandbox,
@@ -19,16 +21,17 @@ export async function POST(request: Request) {
     const {access_token} = data;
     // Pull real-time balance information for each account associated
     // with the Item
-    const plaidRequest = {
-        access_token: access_token,
+    const plaidRequest: AssetReportCreateRequest = {
+        access_tokens: [access_token],
+        days_requested: 60,
     };
     try {
-        const response = await plaidClient.accountsBalanceGet(plaidRequest);
-        const accounts = response.data.accounts;
-        return NextResponse.json(accounts);
+        const response = await plaidClient.assetReportCreate(plaidRequest)
+        const {asset_report_token} = response.data;
+        return NextResponse.json(asset_report_token);
+
     } catch (error) {
         // handle error
         console.log(error);
     }
 };
-

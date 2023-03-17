@@ -1,6 +1,9 @@
 "use client";
 import {MdSpaceDashboard} from "react-icons/md";
-export default function SideBar() {
+type PropsSideBar = {
+    mail: string
+}
+export default function SideBar(props: PropsSideBar) {
     return (
         <div className=" w-[200px] bg-[#161719] flex items-center  pr-[10px] justify-center">
             <div className="bg-[#202123] h-full w-full pt-5">

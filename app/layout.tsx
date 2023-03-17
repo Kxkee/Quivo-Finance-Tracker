@@ -24,7 +24,7 @@ export default async function RootLayout({ children }) {
       <SupabaseProvider>
         <SupabaseListener serverAccessToken={session?.access_token} />
           <div className="h-screen w-screen bg-[#161719] flex">
-              <SideBar />
+              <SideBar mail={session?.user.email} />
               <div className="h-full] pl-[10px] w-full flex">
                   {children}
               </div>

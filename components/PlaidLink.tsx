@@ -7,7 +7,7 @@ import axios from "axios";
 
 type PropsPlaidLink = {
     id: string,
-    accessToken: string | undefined,
+    accessToken: string | undefined
 }
 
 export default function PlaidLink(props: PropsPlaidLink) {
@@ -48,7 +48,6 @@ export default function PlaidLink(props: PropsPlaidLink) {
         }
 
         if(!props.accessToken) {
-
             if (!publicToken) {
                 console.log("pas d'accesstoken")
                 getLinkToken();

@@ -22,8 +22,9 @@ export async function POST(request: Request, { params }) {
       client_user_id: clientId,
     },
     client_name: 'Plaid Test App',
-    products: ['auth'],
+    products: ['auth', 'transactions', 'assets'],
     language: 'fr',
+    webhook: 'http://localhost:3000/dashboard/api/plaid/12/report',
     redirect_uri: 'http://localhost:3000/dashboard/',
     country_codes: ['FR'],
   };

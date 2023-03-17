@@ -19,6 +19,7 @@ export default function PlaidLink(props: PropsPlaidLink) {
             console.log('adding')
             console.log(accessToken);
             try {
+                console.log('voici les access', accessToken, props.id)
                 if(accessToken && props.id) {
                     const { data, error } = await supabase.from("bank").insert({
                         user_id: props.id,
