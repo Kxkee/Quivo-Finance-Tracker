@@ -5,12 +5,10 @@ import './globals.css'
 import { createClient } from '@/utils/supabaseServer';
 import Header from "@/components/Header";
 import SideBar from "@/components/SideBar";
-
 export default async function RootLayout({ children }) {
   const supabase = createClient()
 
-  const {data: { session }} = await supabase.auth.getSession()
-
+  const {data: { session }} = await supabase.auth.getSession();
   return (
       <html lang="en">
 
@@ -23,12 +21,7 @@ export default async function RootLayout({ children }) {
       <body>
       <SupabaseProvider>
         <SupabaseListener serverAccessToken={session?.access_token} />
-          <div className="h-screen w-screen bg-[#161719] flex">
-              <SideBar mail={session?.user.email} />
-              <div className="h-full] pl-[10px] w-full flex">
-                  {children}
-              </div>
-          </div>
+          {children}
 
       </SupabaseProvider>
       </body>

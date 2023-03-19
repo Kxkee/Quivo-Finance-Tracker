@@ -17,7 +17,6 @@ export async function middleware(req: NextRequest) {
 
     switch(url) {
         case '/dashboard':
-        case '/profile':
             if (!session) {
                 // Auth condition not met, redirect to home page.
                 const redirectUrl = req.nextUrl.clone();

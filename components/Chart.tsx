@@ -49,8 +49,9 @@ export default function Chart(props: PropsChart) {
         <div className="w-3/4 h-full rounded-lg bg-[#202123] p-5 mr-[10px]">
             {chartData && (
                 <div className="w-full h-full flex flex-col justify-around">
-                    <div>
-                        <p className="text-3xl font-bold">Balance: {currentBalance} $</p>
+                    <div className="flex flex-col gap-1">
+                        <p className="text-sm text-gray-500">Balance</p>
+                        <p className="text-3xl font-bold">{currentBalance} $</p>
                     </div>
                 <Line data={chartData} />
                 </div>

@@ -12,7 +12,10 @@ export default function Home() {
                 <a className="text-white font-semibold">Sign in</a>
               </div>
               <div className="flex gap-1 font-bold text-5xl justify-center mt-20 text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-500">
-                    <h1>Track all your accounts in one place</h1>
+                  <h1>Track all your accounts in <span style={{
+                      background: "linear-gradient(180deg, rgba(4,255,120,1) 0%, rgba(0,0,0,0.6993172268907564) 100%)",
+                     "-webkit-background-clip": "text",
+                      "-webkit-text-fill-color": "transparent"}}>one</span> place</h1>
               </div>
               <div className="flex gap-1  text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-400 font-bold text-4xl justify-center mt-7">
                     <h3>With our easy-to-use banking app.</h3>
